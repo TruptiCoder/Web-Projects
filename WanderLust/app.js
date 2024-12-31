@@ -8,20 +8,20 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 
 app.set("view engine", "ejs");
-app.set("views" , path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "/public/css")));
 app.use(express.static(path.join(__dirname, "/public/js")));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 main()
-.then(() => {
-    console.log("Connected to Database");
-})
-.catch((err) => {
-    console.log(err);
-})
+    .then(() => {
+        console.log("Connected to Database");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 async function main() {
     mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
@@ -29,54 +29,54 @@ async function main() {
 
 app.get("/", (req, res) => {
     res.send("Hello from root");
-})
+});
 
 // Index Route
 app.get("/listings", async (req, res) => {
-    const allListings = await Listing.find({})
-    res.render("listings/index.ejs", {allListings});
-})
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs", { allListings });
+});
 
 // New Route
 app.get("/listings/new", (req, res) => {
     res.render("listings/new.ejs");
-})
+});
 
 // Show Route
 app.get("/listings/:id", async (req, res) => {
-    let {id} = req.params;
+    let { id } = req.params;
     const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", {listing});
-})
+    res.render("listings/show.ejs", { listing });
+});
 
 // Create Route
-app.post("/listings", async(req, res) => {
+app.post("/listings", async (req, res) => {
     const newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
-})
+});
 
 // Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
-    let {id} = req.params;
+    let { id } = req.params;
     const listing = await Listing.findById(id);
-    res.render("listings/edit.ejs", {listing});
-})
+    res.render("listings/edit.ejs", { listing });
+});
 
 // Update Route
 app.put("/listings/:id", async (req, res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    let { id } = req.params;
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings/${id}`);
-})
+});
 
 // Delete Route
 app.delete("/listings/:id", async (req, res) => {
-    let {id} = req.params;
+    let { id } = req.params;
     let deleted = await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
-})
+});
 
 app.listen(port, (req, res) => {
     console.log(`App is listing at port ${port}`);
-})
+});

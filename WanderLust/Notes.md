@@ -65,4 +65,5 @@ npm install method-override
     <% layout("/layouts/boilerplate") -%> in other files &
     <%- body %> in original file
 
-Designing the navbar using bootstrap
+### Designing
+Designing all the components and pages using Bootstrap and style.css
