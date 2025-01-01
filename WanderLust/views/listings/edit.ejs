@@ -2,7 +2,7 @@
 <body>
     <div class="col-8 offset-2">
         <h3>Edit your Listing</h3>
-        <form method="post" action="/listings/<%= listing._id %>?_method=PUT">
+        <form class="needs-validation" novalidate method="post" action="/listings/<%= listing._id %>?_method=PUT">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input
@@ -10,12 +10,17 @@
                     type="text"
                     name="listing[title]"
                     value="<%= listing.title %>"
+                    required
                 />
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please Enter valid details</div>
             </div>
     
             <div class="mb-3">
                 <label for="title" class="form-label">Description</label>
-                <textarea class="form-control" name="listing[description]"><%= listing.description %></textarea>
+                <textarea class="form-control"name="listing[description]" required><%= listing.description %></textarea>
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please Enter valid details</div>
             </div>
     
             <div class="mb-3">
@@ -25,7 +30,10 @@
                     type="text"
                     name="listing[image]"
                     value="<%= listing.image %>"
+                    required
                 />
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please Enter valid details</div>
             </div>
     
             <div class="row">
@@ -36,7 +44,10 @@
                         type="number"
                         name="listing[price]"
                         value="<%= listing.price %>"
+                        required
                     />
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please Enter valid details</div>
                 </div>
         
                 <div class="mb-3 col-md-8">
@@ -46,7 +57,10 @@
                         type="text"
                         name="listing[country]"
                         value="<%= listing.country %>"
+                        required
                     />
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please Enter valid details</div>
                 </div>
             </div>
     
@@ -57,7 +71,10 @@
                     type="text"
                     name="listing[location]"
                     value="<%= listing.location %>"
+                    required
                 />
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please Enter valid details</div>
             </div>
     
             <button class="btn btn-crimson mb-3">Edit</button>

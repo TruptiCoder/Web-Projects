@@ -67,3 +67,18 @@ npm install method-override
 
 ### Designing
 Designing all the components and pages using Bootstrap and style.css
+
+### Error Handling and Middlewares
+
+#### client side validation - Form Validations
+    When we enter data in the form, the browser and / or the web server will check to see that the data is in the correct format within the constriants set by the application.
+
+#### Error handling
+    using custom wrapAsync on replacement of try-catch
+    Using custom expressError
+    Using error.ejs for better display of error.
+
+#### Validation for Schema
+    We will use Joi to validate our schema.
+    npm i joi
+    Converting joi validation into a function and use as the middleware

@@ -16,7 +16,7 @@ h3 {
 }
 
 .navbar {
-    height: 5rem;
+    min-height: 5rem;
     background-color: white;
 }
 
@@ -130,4 +130,10 @@ h3 {
 
 .show-card {
     padding-inline: 0;
+}
+
+.fa-triangle-exclamation {
+    color: #fe424d;
+    opacity: .7;
+    font-size: 1.3rem;
 }
