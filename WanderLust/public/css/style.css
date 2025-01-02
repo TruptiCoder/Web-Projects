@@ -60,7 +60,7 @@ h3 {
 }
 
 /* Cards  */
-.card {
+.listing-card, .show-card {
     border: none !important;
     margin-bottom: 2rem;
 }
@@ -136,4 +136,9 @@ h3 {
     color: #fe424d;
     opacity: .7;
     font-size: 1.3rem;
+}
+
+/* Reviews */
+.review {
+    padding: 1rem; 
 }

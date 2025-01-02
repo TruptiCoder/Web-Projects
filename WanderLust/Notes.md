@@ -82,3 +82,30 @@ Designing all the components and pages using Bootstrap and style.css
     We will use Joi to validate our schema.
     npm i joi
     Converting joi validation into a function and use as the middleware
+
+## Project Phase 2
+
+### Handling Deletions
+    using Mongoose Middlewares
+    We can use 2 middlewares:
+        pre - run before the query is executed
+        post - run after the query is 
+
+### Reviews
+#### Creating New Model: Reviews
+    comment
+    rating (1 to 5)
+    createdAt
+
+1 listing can have multiple review so this is one many relationship.
+
+#### Create Reviews
+1. Setting up the Reviews Form
+    We will add review form to shows page
+2. Submitting the Form
+    Post --> /listings/:id/reviews
+3. Validations for Reviews
+    client side validation
+    server side validation using joi
+4. Render Reviews
+    show reviews in show page.
