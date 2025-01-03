@@ -109,3 +109,9 @@ Designing all the components and pages using Bootstrap and style.css
     server side validation using joi
 4. Render Reviews
     show reviews in show page.
+5. Deleting Reviews
+    $pull - The $pull operator removes from an existing array all instances of a value or values that match a specific condition.
+
+    If we delete a review then that review Id should be deleted from the listing reviews array.
+
+    If we delete a listing the reviews related to that listing should be deleted so we will use a post middleware
