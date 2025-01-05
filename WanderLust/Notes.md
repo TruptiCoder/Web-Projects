@@ -45,7 +45,7 @@ Commands:
 npm install method-override
     This package is used to send the put, patch, delete requests.
 
-#### Routes
+### Routes
 1. Index Route
     Get --> /listings   --> return all listings
 2. Read & Show Route
@@ -115,3 +115,51 @@ Designing all the components and pages using Bootstrap and style.css
     If we delete a review then that review Id should be deleted from the listing reviews array.
 
     If we delete a listing the reviews related to that listing should be deleted so we will use a post middleware
+
+### Express Router
+Express router are a way to organize you express application such that our primary app.js file does not become bloated.
+
+const router = express.Router() // creates new router object
+
+while using express router if we have to pass the parameters from app.js to reviews.js then we have to mergeParams.
+
+### Cookies
+web cookies
+    HTTP cookies are small blocks of data created by a web server while a user is browsing a website and placed on the user's computer or other device by the user's web browser.
+
+    used for:
+        1. Session management
+        2. personalization
+        3. Tracking
+
+    We will be using cookie-parser package to extract data from cookies which are already set.
+        npm i cookie-parser
+    
+    signed is a property which indicates if the cookie is be signed
+    signed cookies cannot be tampered.
+
+### State
+Session
+    When a client interacts with our server, this one interaction is called session.
+Stateful Protocol
+    stateful protocol requrire server to save the status and session information
+    eg - ftp (file transfer protocol)
+Stateless Protocol
+    Stateless protocol does not require the server to retain the server information or 
+    eg - http
+
+### Express Session
+An attempt to make our session stateful
+    express session assign unique id to a session and then save their information in a temporary storage not in database.
+    The unique id is given to browser in form of a cookie.
+
+    npm i express-session
+
+    by defaults cookies don't have expiry date so we can explicitly add a exipiy date so that cookies remain stored after closing browers.
+
+### connect-flash
+The flash is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user.
+    npm i connect-flash
+
+### res.locals
+Use this property to set variables accessible in templates rendered with res.render.

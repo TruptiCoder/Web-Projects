@@ -1,0 +1,11 @@
+<% if(success && success.length) { %>
+    <div class="alert alert-success mt-3 alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+<% } else if(errorMsg && errorMsg.length) { %>
+    <div class="alert alert-danger mt-3 alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+        <%= errorMsg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+<% } %>
