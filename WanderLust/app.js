@@ -8,9 +8,13 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
 const listings = require("./routes/listings.js");
 const reviews = require("./routes/reviews.js");
+const user = require("./routes/user.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -33,6 +37,13 @@ const sessionOption = {
 
 app.use(session(sessionOption));
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 main()
     .then(() => {
@@ -58,6 +69,7 @@ app.use((req, res, next) => {
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews)
+app.use("/", user);
 
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));

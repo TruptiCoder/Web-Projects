@@ -3,17 +3,17 @@
 We will be making fronend and backend both.
 
 Technologies:
-frontend: Tailwaind CSS, html, CSS, JS
-Backend: Node.js, express.js, ejs, ejs-mate, cookie-parser
+- frontend: Tailwaind CSS, html, CSS, JS
+- Backend: Node.js, express.js, ejs, ejs-mate, cookie-parser
 Database: MongoDB
 
 ## Project Phase 1
 
-Getting Started
+- Getting Started
     Database set Up
     Rest Apis for CRUD
 
-Commands:
+- Commands:
     npm init -y
     // To create package.json
 
@@ -139,12 +139,12 @@ web cookies
     signed cookies cannot be tampered.
 
 ### State
-Session
+- Session
     When a client interacts with our server, this one interaction is called session.
-Stateful Protocol
+- Stateful Protocol
     stateful protocol requrire server to save the status and session information
     eg - ftp (file transfer protocol)
-Stateless Protocol
+- Stateless Protocol
     Stateless protocol does not require the server to retain the server information or 
     eg - http
 
@@ -163,3 +163,60 @@ The flash is a special area of the session used for storing messages. Messages a
 
 ### res.locals
 Use this property to set variables accessible in templates rendered with res.render.
+
+### Authentication and Authorization
+
+Authentication: Authentication is the process of verifying who someone is.
+
+Authorization: Authorization is the process of verifying what specific application, files, and data a user has access to.
+
+#### Storing Passwords
+- We Never store the passwords as it is. We store their hashed form.
+- We use hashing function to change password to another form.
+
+#### Hashing
+- For every input, there is a fixed output
+- They are one-way functions, we can't get input from output
+- For a different input, there is a different output but of same length
+- Small changes in input should bring large changes in output.
+
+#### Salting
+Password salting is a technique to protect passwords stored in databases by adding a string of 32 or more characters and then hashing them.
+
+eg. salt = "%*&"
+    abc --> abs%*& (salted string)
+
+#### Passport
+- It is library which help in authentication.
+- Passport si Express-compatible authentication middleware for Node.js.
+
+- passport-local is used for username and password.
+- to use mongodb we use passport-local-mongoose.
+
+npm i passport
+npm i passport-local
+npm i passport-local-mongoose
+
+#### User Model
+- user: username, passport, email
+
+- You're free to define your User how you like. Passport-Local Mongoose will add a username, hash and salt field to store the username, the hashed password and the salt value.
+- Additionally, Passport-Local Mongoose adds some methods to your Schema.
+
+#### Configuring Strategy
+
+- passport.initialize()
+    A middleware that initializes passport.
+
+- passport.session()
+    A web application needs the ability to identify users as they browse from page to page. This series of requests and responses, each associated with the same user, is known as a session.
+
+- passport.user(new LocalStrategy(User.authenticate()))
+
+-- passport implements pbkdf2 hashing algorithm.
+
+#### Signup User
+- Get --> /signup --> submit --> Post --> /signup
+
+#### login User
+- Get --> /login --> submit --> Post --> /login
