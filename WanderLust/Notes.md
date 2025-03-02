@@ -230,21 +230,32 @@ npm i passport-local-mongoose
 - Get --> /logout
 - req.logout method to logout user through passport
 
-### Adding styling 
+#### Adding styling 
 - If user is not logged in then show the signup and login options
 - If user is logged in then show logout option
 - Adding options to the navbar.ejs
 - using req.user to add the functionality
 - we cannot use req.user directly in ejs file so we will declare it as local variable in app.js
 
-### Login after signup
+#### Login after signup
 - If we signup then we should be logged in.
 - Passport's login method automatically established a login session.
 - We can invoke login to automatically login a user.
 
-### Post Login page
+#### Post Login page
 - If a user is trying to create a listing then it needs to be logged in so, login page appears but after it redirects to the listings page.
 - But it should redirect to where it wanted to go in this case create listing.
 - Using req.originalUrl parameter to resolve this issue
 
 - path --> login --> path (redirectUrl stored as local var using middleware)
+
+#### Listing Owner
+- Only the owner of the listing should have permission to delete or edit the listing
+- Added owner in listing model
+
+### Authorization
+- hinding delete and edit button for those who are not owner of that listing
+- Created middleware to handle authoriazation.
+
+#### Authorization of reviews
+- For every review it will have author property.
