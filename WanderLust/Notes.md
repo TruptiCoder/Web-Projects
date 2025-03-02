@@ -220,3 +220,31 @@ npm i passport-local-mongoose
 
 #### login User
 - Get --> /login --> submit --> Post --> /login
+
+#### Connecting login Route
+- We want that if a user is logged in then only it can create a new listing otherwise not.
+- To check if user is logged in
+    -> req.isAuthenticated() // passport method
+
+#### Logout User
+- Get --> /logout
+- req.logout method to logout user through passport
+
+### Adding styling 
+- If user is not logged in then show the signup and login options
+- If user is logged in then show logout option
+- Adding options to the navbar.ejs
+- using req.user to add the functionality
+- we cannot use req.user directly in ejs file so we will declare it as local variable in app.js
+
+### Login after signup
+- If we signup then we should be logged in.
+- Passport's login method automatically established a login session.
+- We can invoke login to automatically login a user.
+
+### Post Login page
+- If a user is trying to create a listing then it needs to be logged in so, login page appears but after it redirects to the listings page.
+- But it should redirect to where it wanted to go in this case create listing.
+- Using req.originalUrl parameter to resolve this issue
+
+- path --> login --> path (redirectUrl stored as local var using middleware)
