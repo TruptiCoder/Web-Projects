@@ -4,7 +4,7 @@ We will be making fronend and backend both.
 
 Technologies:
 - frontend: Tailwaind CSS, html, CSS, JS
-- Backend: Node.js, express.js, ejs, ejs-mate, cookie-parser
+- Backend: Node.js, express.js, ejs, ejs-mate, cookie-parser, passport
 Database: MongoDB
 
 ## Project Phase 1
@@ -259,3 +259,23 @@ npm i passport-local-mongoose
 
 #### Authorization of reviews
 - For every review it will have author property.
+
+## Project Phase 3
+
+### MVC: Model, View, Controller
+- Implement Design Pattern for listings
+- We will create a controllers folder where we will create controllers for listings, reviews, and users
+
+### Re-styling the rating
+- we will user starability library to restyle the rating
+
+### Cloud Setup
+- We will use cloudinary for cloude storage
+
+- To store the credentials we will use .env file
+    - .evn file is used to store environment variables
+    - KEY=value (format of storing variables with no spcaes)
+    - To access the environment variables with need npm package dotenv
+    - require("dotenv").config();
+    - Then we can access variables through process.env
+    - ex. console.log(process.env.SECRETE)
