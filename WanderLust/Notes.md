@@ -269,6 +269,22 @@ npm i passport-local-mongoose
 ### Re-styling the rating
 - we will user starability library to restyle the rating
 
+### Image Upload
+Problems:
+    - form is not able to sent file to backend
+    - size limit of mongoDB-BSON
+Solution:
+    - make form capable of sending files
+    - we will not save file in mongoDB
+    - use 3rd party service (cloud server)
+    - after saving file on cloud it will provide a URL/Link
+    - Then we will save URL in mongo
+
+### Manipulating Form
+enctype="multipart/form-data"
+    - changing encoding type so that the form can be cabable to send file type data to the backend.
+    - To parse this type of data we will use Multer Library of npm
+
 ### Cloud Setup
 - We will use cloudinary for cloude storage
 
@@ -279,3 +295,13 @@ npm i passport-local-mongoose
     - require("dotenv").config();
     - Then we can access variables through process.env
     - ex. console.log(process.env.SECRETE)
+
+### Store File
+Multer store cloudinary
+- npm i cloudinary multer-storage-cloudinary
+- We will create a new file called cloudConfig to store data related to cloudinary
+
+form(file) --> backend(parse) --> cloud(store) --> URL/Link(file)
+
+- To save the link in mongo we will modify the image in schema
+    - add url and filename
