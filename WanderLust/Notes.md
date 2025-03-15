@@ -305,3 +305,10 @@ form(file) --> backend(parse) --> cloud(store) --> URL/Link(file)
 
 - To save the link in mongo we will modify the image in schema
     - add url and filename
+
+### Mongo Atlas
+    - cloud database service
+    - Deploy a multi-cloud database.
+
+### mongo session
+    - we will use connect-mongo

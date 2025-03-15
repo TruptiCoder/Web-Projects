@@ -11,6 +11,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -28,7 +29,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
+const store = MongoStore.create({
+    mongoUrl: process.env.ATLAS_DB,
+    crypto: {
+        secret: "MyNameIsTrupti"
+    },
+    touchAfter: 24 * 60 * 60,
+});
+
+store.on("error", () => {
+    console.log("ERROR in MONGO SESSION STORE", err);
+})
+
 const sessionOption = {
+    store,
     secret: "MyNameIsTrupti",
     resave: false,
     saveUninitialized: true,
@@ -58,7 +72,7 @@ main()
     });
 
 async function main() {
-    mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+    mongoose.connect(process.env.ATLAS_DB);
 }
 
 app.get("/", (req, res) => {
