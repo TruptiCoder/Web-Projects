@@ -312,3 +312,11 @@ form(file) --> backend(parse) --> cloud(store) --> URL/Link(file)
 
 ### mongo session
     - we will use connect-mongo
+
+### Deployment
+- We are using render for this
+- In package.json we need to add
+    "engines": {
+        "node": "20.15.0"
+    }
+    to specify the node version
