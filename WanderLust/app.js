@@ -75,10 +75,6 @@ async function main() {
     mongoose.connect(process.env.ATLAS_DB);
 }
 
-app.get("/", (req, res) => {
-    res.send("Hello from root");
-});
-
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.errorMsg = req.flash("error");
