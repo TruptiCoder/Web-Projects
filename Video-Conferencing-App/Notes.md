@@ -87,4 +87,11 @@ Frontend:
 
 
 packages installed:
-express, mongoose, bcrypt, http-status, cors
+express, mongoose, bcrypt, http-status, cors, crypto, socket.io
+
+## Backend Building
+
+- Created atlas database
+- Created user and meeting models
+- created routes for user
+- Implemented Authentication using bcrypt and crypto
