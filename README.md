@@ -15,6 +15,10 @@ end date: Ongoing
 Project description
 This is project is made to understand the concepts of networking and how video conferencing works.
 
+Project - 3 : Real Time Chat App
+start date: 04-05-2025
+end data: Ongoing
+
 Mini Projects:
 1. Docs-Mini-App
 2. Calculator

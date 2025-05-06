@@ -8,7 +8,7 @@ export const Navbar = () => {
             <h1>TalkBridge</h1>
         </div>
         <div className='nav-list'>
-            <NavLink to={"/auth"}>SignUp</NavLink>
+            <NavLink to={"/auth"} >SignUp</NavLink>
             <NavLink to={"/auth"}>Login</NavLink>
         </div>
     </nav>
