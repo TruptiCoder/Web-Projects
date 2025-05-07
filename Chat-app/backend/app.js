@@ -4,7 +4,10 @@ import mongoose from "mongoose";
 import { Server } from "socket.io";
 import {createServer} from "http";
 import cors from "cors";
-import {router as authRouter} from "./routes/auth.routes.js"
+import {router as authRouter} from "./routes/auth.routes.js";
+import {router as msgRouter} from './routes/msg.routes.js';
+import { Msg } from "./models/msg.model.js";
+import { timeStamp } from "console";
 
 const port = 5000;
 const app = express();
@@ -19,7 +22,7 @@ const io = new Server(server, {
 });
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: "*",
     credentials: true,
 }));
@@ -27,12 +30,41 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/api/auth", authRouter);
+app.use("/api", msgRouter);
+
+const users = {};
 
 io.on("connection", (socket) => {
-    console.log("User connected", socket.id);
+
+    socket.on("join", (userId) => {
+        users[userId] = socket.id;
+        console.log(`${userId} joined with id ${socket.id}`);
+    });
+
+    socket.on("send_msg", async (data) => {
+        const {senderId, receiverId, content} = data;
+
+        const newMsg = new Msg({
+            sender: senderId,
+            receiver: receiverId,
+            content: content
+        });
+        await newMsg.save();
+
+        const receiverSocket = users[receiverId];
+        if(receiverSocket) {
+            io.to(receiverSocket).emit("receive_msg", {
+                senderId,
+                content,
+                time: newMsg.time,
+            });
+        }
+    });
 
     socket.on("disconnect", () => {
-        console.log("User disconnected", socket.id);
+        for(const key in users) {
+            if(users[key] === socket.id) delete users[key];
+        }
     })
 })
 

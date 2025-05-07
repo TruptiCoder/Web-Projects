@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 
-export const AuthForm = ({mode, setMode}) => {
+export const AuthForm = ({mode, setMode, user, setUser}) => {
 
     const [data, setData] = useState({
         name: "",
@@ -31,9 +31,10 @@ export const AuthForm = ({mode, setMode}) => {
                     username: data.username,
                     password: data.password
                 });
-                localStorage.setItem("user", JSON.stringify(res.data.user));
+                console.log(res.data);
+                setUser(res.data.user);
                 alert("Login Successful!");
-                navigate("/dashboard");
+                navigate(`/${res.data.user.id}/dashboard`);
             }
         } catch (err) {
             console.log("Error: ", err);

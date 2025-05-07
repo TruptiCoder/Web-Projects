@@ -41,7 +41,7 @@ main {
     flex-direction: column;
     padding: 3rem;
     border-radius: .5rem;
-    width: 60%;
+    max-width: 50rem;
     height: 70%;
 }
 
