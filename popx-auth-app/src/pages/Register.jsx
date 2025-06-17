@@ -56,6 +56,7 @@ const Register = () => {
                 value={form.fullName}
                 onChange={handleChange}
                 required
+                className="w-full"
                 />
             </fieldset>
 
@@ -68,6 +69,7 @@ const Register = () => {
                 value={form.phone}
                 onChange={handleChange}
                 required
+                className="w-full"
                 />
             </fieldset>
 
@@ -80,6 +82,7 @@ const Register = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
+                className="w-full"
                 />
             </fieldset>
 
@@ -92,6 +95,7 @@ const Register = () => {
                 value={form.password}
                 onChange={handleChange}
                 required
+                className="w-full"
                 />
             </fieldset>
 
@@ -103,6 +107,7 @@ const Register = () => {
                 placeholder="Company Name"
                 value={form.company}
                 onChange={handleChange}
+                className="w-full"
                 />
             </fieldset>
 

@@ -48,6 +48,7 @@ const Login = () => {
             value={form.email}
             onChange={handleChange}
             required
+            className="w-full"
             />
         </fieldset>
 
@@ -60,6 +61,7 @@ const Login = () => {
             value={form.password}
             onChange={handleChange}
             required
+            className="w-full"
             />
         </fieldset>
 
