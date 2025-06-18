@@ -1,0 +1,35 @@
+# Root .gitignore
+
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# System
+.DS_Store
+Thumbs.db
+
+# Vite / React
+client/dist/
+client/.vite/
+
+# Build
+build/
+coverage/
+*.tsbuildinfo
+
+# OS
+*.swp
+*.swo
+
+# VSCode / JetBrains IDEs
+.vscode/
+.idea/
+
+# Mac-specific
+*.DS_Store
