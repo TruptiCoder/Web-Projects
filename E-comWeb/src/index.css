@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+nav {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 10px 10px #9797974a;
+}
+
+.logo {
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  padding: .5rem;
+  border-radius: .2rem;
+  transition: all .3s ease-in-out;
+}
+
+.nav-links a:hover {
+  background-color: royalblue;
+  color: white;
+  border-color: royalblue;
+}
+
+.add, .view, .show {
+  width: 100%;
+  height: calc(100vh - 8rem);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  padding: 1.5rem 2rem;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: lavender;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 5rem;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+form > h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+form input, form textarea, form select {
+  height: 2rem;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  border: transparent;
+  resize: vertical;
+}
+
+form .ad-img {
+  display: flex;
+  justify-content: space-between;
+}
+
+form .ad-img > input {
+  width: 85%;
+}
+
+form .ad-img > button {
+  width: 12%;
+  height: 2rem;
+  background-color: white;
+  color: black;
+  border: transparent;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+form .ad-img > button:hover {
+  background-color: royalblue;
+  color: white;
+}
+
+form > button {
+  height: 2rem;
+  background-color: #3cb960;
+  border-radius: .5rem;
+  border: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+form > button:hover {
+  background-color: #187733;
+}
+
+.view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.item {
+  width: 22rem;
+  height: 17rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.item .overlay {
+  width: 22rem;
+  height: 15rem;
+  overflow: hidden;
+  margin-bottom: .5rem;
+  border-radius: 1rem;
+}
+
+.item img {
+  width: 22rem;
+  height: 15rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem;
+  transition: scale .3s ease-in-out;
+}
+
+.item button {
+  padding: .5rem 1rem;
+  background-color: crimson;
+  color: white;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% 0;
+  transition: all .3s ease-in-out;
+  opacity: 0;
+}
+
+.item a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.item:hover button {
+  opacity: 1;
+  translate: -50% -60% ;
+}
+
+.item:hover img {
+  scale: 1.1;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.gallery .img-show {
+  height: 15rem;
+  width: 20rem;
+  border-radius: 1rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(217, 217, 217);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 415px) {
+  nav h1{
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .add {
+    padding: 1rem 0;
+  }
+
+  form {
+    padding: 1.5rem;
+    border-radius: 0;
+    height: 100%;
+  }
+
+  .item:hover button {
+    opacity: 1;
+    translate: 30% 150%;
+  }
+
+  .overlay {
+    width: 100%;
+  }
+
+  .item button {
+    opacity: 1;
+    translate: 30% 150%;
+    transition: background-color .3s ease-in-out;
+  }
+
+  .item button:active {
+    background-color: royalblue;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .item img {
+    width: 100%;
+  }
+}
