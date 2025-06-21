@@ -3,7 +3,7 @@ import { AddItem } from './pages/AddItem'
 import { ViewItems } from './pages/ViewItems'
 import { Show } from './pages/Show'
 import { useState } from 'react'
-import { Notification } from './layouts/notification'
+import { Notification } from './layouts/Notification'
 
 export const App = () => {
   const [items, setItems] = useState([]);
