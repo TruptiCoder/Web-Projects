@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111;
+    color: white;
+    overflow-x: hidden;
+}
+
+.links button {
+    position: relative;
+    width: fit-content;
+}
+
+.links button::after {
+    content: "";
+    background-color: white;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    transition: all .3s ease-in-out;
+}
+
+.links button:hover::after {
+    width: 100%;
+}
+
+.skills li {
+    width: 8rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.skills li img {
+    width: 4rem;
+}
+
+.tag {
+    border: 1px solid royalblue;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+    margin: 1rem 1rem 0 0;
+}
