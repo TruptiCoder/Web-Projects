@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../css/auth.css"
 import { AuthForm } from '../components/AuthForm';
 
-export const Authentication = ({user, setUser}) => {
-
-  const [mode, setMode] = useState("signup");
+export const Authentication = ({user, setUser, mode, setMode}) => {
 
   return (
     <main>

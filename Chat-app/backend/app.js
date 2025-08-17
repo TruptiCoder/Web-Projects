@@ -6,6 +6,7 @@ import {createServer} from "http";
 import cors from "cors";
 import {router as authRouter} from "./routes/auth.routes.js";
 import {router as msgRouter} from './routes/msg.routes.js';
+import {router as contactRouter} from "./routes/contact.routes.js";
 import { Msg } from "./models/msg.model.js";
 import { timeStamp } from "console";
 
@@ -16,7 +17,7 @@ const server = createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "*",
-        methods: ["*"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
     }
 });
@@ -30,6 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/api/auth", authRouter);
+app.use("/api/contact", contactRouter);
 app.use("/api", msgRouter);
 
 const users = {};
@@ -73,6 +75,6 @@ app.get("/", (req, res) => {
 })
 
 server.listen(port, async () => {
-    await (await mongoose.connect("mongodb://localhost:27017/chat-app"));
+    await mongoose.connect("mongodb://localhost:27017/chat-app");
     console.log(`Server is Listening on ${port}`);
 })

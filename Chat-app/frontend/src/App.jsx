@@ -8,6 +8,7 @@ import {Dashboard} from "./pages/Dashboard"
 export const App = () => {
 
   const [user, setUser] = useState({});
+  const [mode, setMode] = useState("signup");
 
   return (
     <div>
@@ -16,8 +17,8 @@ export const App = () => {
       
         <Routes>
 
-          <Route path='/' element={<LandingPage />} ></Route>
-          <Route path='/auth' element={<Authentication user={user} setUser={setUser} />} />
+          <Route path='/' element={<LandingPage setMode={setMode} />} ></Route>
+          <Route path='/auth' element={<Authentication user={user} setUser={setUser} mode={mode} setMode={setMode} />} />
           <Route path='/:id/dashboard' element={<Dashboard user={user} setUser={setUser} />} />
         </Routes>
 

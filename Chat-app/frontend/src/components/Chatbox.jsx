@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 
-export const Chatbox = ({send_msg, rec, msgs, setMsgs, user}) => {
+export const Chatbox = ({send_msg, rec, msgs, setMsgs, user, newMsg}) => {
 
     const [text, setText] = useState("");
 
@@ -17,7 +17,7 @@ export const Chatbox = ({send_msg, rec, msgs, setMsgs, user}) => {
             }
         }
         fetchMessages();
-    }, [rec, text]);
+    }, [rec, newMsg]);
 
     const handleSend = (e) => {
         e.preventDefault();

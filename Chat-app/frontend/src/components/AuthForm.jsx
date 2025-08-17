@@ -31,8 +31,8 @@ export const AuthForm = ({mode, setMode, user, setUser}) => {
                     username: data.username,
                     password: data.password
                 });
-                console.log(res.data);
                 setUser(res.data.user);
+                localStorage.setItem("user", JSON.stringify(res.data.user))
                 alert("Login Successful!");
                 navigate(`/${res.data.user.id}/dashboard`);
             }

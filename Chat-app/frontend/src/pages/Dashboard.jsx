@@ -8,12 +8,16 @@ import "../css/dashboard.css"
 export const Dashboard = ({user, setUser}) => {
 
   const navigate = useNavigate();
+  //  https://9877k7ww-5000.inc1.devtunnels.ms http://localhost:5000
   const socket = useMemo(() => io("http://localhost:5000"))
 
-  const [currUser, setCurrUser] = useState(user);
+  const [currUser, setCurrUser] = useState(() => {
+    const data = localStorage.getItem("user");
+    return JSON.parse(data);
+  });
   const [recUser, setRecUser] = useState({});
   const [msgs, setMsgs] = useState([]);
-
+  const [newMsg, setNewMsg] = useState("");
   
   useEffect(() => {
     socket.on("connect", () => {
@@ -25,6 +29,7 @@ export const Dashboard = ({user, setUser}) => {
     socket.emit("join", currUser.id);
     
     socket.on("receive_msg", (msgObj) => {
+      setNewMsg(msgObj.content);
       setMsgs((prevMsgs) => {
         if (!Array.isArray(prevMsgs)) return [msgObj];
         if (!prevMsgs.some(msg => msg.id === msgObj.id)) {
@@ -35,7 +40,7 @@ export const Dashboard = ({user, setUser}) => {
     });
 
     return () => {
-      socket.off("receiver_msg");
+      socket.off("receive_msg");
       socket.disconnect();
     }
   }, [currUser, navigate]);
@@ -61,16 +66,17 @@ export const Dashboard = ({user, setUser}) => {
   }, [currUser.id, recUser.id, msgs]);
 
   const checkRec = (user) => {
+    console.log("selected receiver: ", user);
     setRecUser(user);
   }
 
 
   return (
     <div className='dashboard'>
-      <Sidebar checkRec={checkRec} user={user} />
+      <Sidebar checkRec={checkRec} user={currUser} />
       <Chatbox send_msg={(text) => {
         send_msg(text);
-      }} rec={recUser} msgs={msgs} setMsgs={setMsgs} user={user} />
+      }} rec={recUser} msgs={msgs} setMsgs={setMsgs} user={currUser} newMsg={newMsg} />
     </div>
   )
 }

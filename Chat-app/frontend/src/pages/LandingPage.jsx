@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { LandingContent } from '../components/LandingContent'
 import "../css/landing.css"
 
-export const LandingPage = () => {
+export const LandingPage = ({setMode}) => {
+
   return (
     <main>
-        <Navbar />
-        <LandingContent />
+        <Navbar setMode={setMode} />
+        <LandingContent setMode={setMode} />
     </main>
   )
 }
