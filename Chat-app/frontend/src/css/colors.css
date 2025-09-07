@@ -1,0 +1,37 @@
+:root {
+    --bg-dark: hsl(254 100% 6%);
+    --bg: hsl(251 100% 10%);
+    --bg-light: hsl(248 77% 15%);
+    --text: hsl(232 100% 100%);
+    --text-light: hsl(232 100% 100%);
+    --text-muted: hsl(233 73% 79%);
+    --highlight: hsl(242 59% 56%);
+    --border: hsl(248 63% 42%);
+    --border-muted: hsl(260 100% 25%);
+    --primary: hsl(237 100% 88%);
+    --secondary: hsl(52 100% 26%);
+    --danger: hsl(7 100% 66%);
+    --warning: hsl(53 100% 21%);
+    --success: hsl(162 100% 22%);
+    --info: hsl(217 100% 70%);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-dark: hsl(233 100% 85%);
+        --bg: hsl(232 100% 95%);
+        --bg-light: hsl(232 100% 100%);
+        --text: hsl(266 100% 12%);
+            --text-light: hsl(232 100% 100%);
+        --text-muted: hsl(248 63% 42%);
+        --highlight: hsl(235 100% 100%);
+        --border: hsl(239 86% 68%);
+        --border-muted: hsl(237 100% 81%);
+        --primary: hsl(248 63% 42%);
+        --secondary: hsl(46 100% 9%);
+        --danger: hsl(4 99% 37%);
+        --warning: hsl(50 100% 12%);
+        --success: hsl(159 100% 9%);
+        --info: hsl(215 95% 42%);
+    }
+}

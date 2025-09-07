@@ -1,3 +1,5 @@
+@import "colors.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -11,21 +13,10 @@ html {
     height: 100%;
 }
 
-:root {
-    --dark-green: #081C15;
-    --text-color: #000;
-    --text-light: #EEF4ED;
-    --bg-more-light: #D8F3DC;
-    --bg-light: #B7E4C7;
-    --bg-regular: #74C69D;
-    --bg-dark: #2D6A4F;
-    --more-dark: #1B4332;
-}
-
 main {
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-regular);
+    background-color: var(--bg-dark);
     position: relative;
 }
 
@@ -34,15 +25,18 @@ main {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    background-color: var(--bg-more-light);
+    background-color: var(--bg-light);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     padding: 3rem;
-    border-radius: .5rem;
-    max-width: 50rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 30rem;
     height: 70%;
+    box-shadow: 0 0 20px var(--border-muted);
 }
 
 .auth-form .toggle-btns {
@@ -55,16 +49,18 @@ main {
 
 .auth-form .toggle-btns button {
     font-size: 1.2rem;
-    background-color: var(--bg-more-light);
-    border: transparent;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
     padding: .5rem 1rem;
-    color: var(--text-color);
+    color: var(--text);
     border-radius: 2rem;
 }
 
 .auth-form .toggle-btns .active {
-    background-color: var(--more-dark);
+    background-color: var(--primary);
     color: var(--text-light);
+    box-shadow: 0 0 10px var(--highlight);
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
 .auth-form form {
@@ -81,14 +77,15 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: var(--text-muted);
     gap: .5rem;
 }
 
 .auth-form form div input {
-    background-color: var(--bg-dark);
-    border: transparent;
-    font-size: 1.2rem;
-    color: var(--text-light);
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    font-size: 1rem;
+    color: var(--text);
     padding: .5rem 1rem;
     border-radius: .5rem;
 }
@@ -96,9 +93,17 @@ main {
 .auth-form form button {
     font-size: 1.1rem;
     padding: .5rem 2rem;
-    background-color: var(--bg-regular);
-    border: transparent;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border);
     border-radius: 5rem;
     margin-top: 1rem;
     align-self: end;
+    color: var(--text);
+    box-shadow: 0 0 10px var(--highlight);
+}
+
+.auth-form form button:hover {
+    background-color: var(--primary);
+    color: var(--text-light);
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }

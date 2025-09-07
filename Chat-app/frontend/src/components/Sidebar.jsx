@@ -83,7 +83,7 @@ export const Sidebar = ({checkRec, user}) => {
             {error && <div className="error">{error}</div>}
             <div className='header'>
                 <h3>Hello, <br/> {user.name}</h3>
-                <p>{user.username}</p>
+                <p>@{user.username}</p>
             </div>
             <div className='box'>
                 <form onSubmit={handleSubmit}>
